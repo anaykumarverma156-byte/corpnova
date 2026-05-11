@@ -1,8 +1,9 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import confetti from 'canvas-confetti';
 import Icon from '@/components/ui/AppIcon';
 
 const quoteSchema = z.object({
@@ -17,13 +18,13 @@ const quoteSchema = z.object({
 type QuoteFormValues = z.infer<typeof quoteSchema>;
 
 export default function GetQuoteForm() {
-  const [step, setStep] = useState<'form' | 'otp'>('form');
+  const [step, setStep] = useState<'form' | 'otp' | 'success'>('form');
   const [otp, setOtp] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState<QuoteFormValues | null>(null);
 
-  const { register, handleSubmit, formState: { errors } } = useForm<QuoteFormValues>({
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<QuoteFormValues>({
     resolver: zodResolver(quoteSchema),
   });
 
@@ -61,8 +62,15 @@ export default function GetQuoteForm() {
         const data = await res.json();
         throw new Error(data.message || 'Invalid OTP');
       }
-      setStep('form');
-      alert('Enquiry submitted successfully!');
+      
+      setStep('success');
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#0071E3', '#34AADC', '#FFFFFF']
+      });
+      reset();
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -109,7 +117,7 @@ export default function GetQuoteForm() {
             </div>
             <div className="pt-8 border-t border-white/10">
               <p className="text-xs text-primary-foreground/60">
-                Response within 24 hours guaranteed.
+                Response within 48 hours.
               </p>
             </div>
           </div>
@@ -122,7 +130,7 @@ export default function GetQuoteForm() {
                     <label className={labelClasses(!!errors.fullName)}>Full Name</label>
                     <input 
                       {...register('fullName')}
-                      placeholder="Anay Verma"
+                      placeholder="Your Name"
                       className={inputClasses(!!errors.fullName)}
                     />
                     {errors.fullName && <p className="text-[10px] text-red-600 mt-1 font-bold">{errors.fullName.message}</p>}
@@ -131,7 +139,7 @@ export default function GetQuoteForm() {
                     <label className={labelClasses(!!errors.email)}>Email Address</label>
                     <input 
                       {...register('email')}
-                      placeholder="anay@example.com"
+                      placeholder="email@example.com"
                       className={inputClasses(!!errors.email)}
                     />
                     {errors.email && <p className="text-[10px] text-red-600 mt-1 font-bold">{errors.email.message}</p>}
@@ -143,7 +151,7 @@ export default function GetQuoteForm() {
                     <label className={labelClasses(!!errors.phone)}>Phone Number</label>
                     <input 
                       {...register('phone')}
-                      placeholder="+91 9876543210"
+                      placeholder="+91 00000 00000"
                       className={inputClasses(!!errors.phone)}
                     />
                     {errors.phone && <p className="text-[10px] text-red-600 mt-1 font-bold">{errors.phone.message}</p>}
@@ -152,7 +160,7 @@ export default function GetQuoteForm() {
                     <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">WhatsApp (Optional)</label>
                     <input 
                       {...register('whatsapp')}
-                      placeholder="+91 9876543210"
+                      placeholder="+91 00000 00000"
                       className={inputClasses(false)}
                     />
                   </div>
@@ -162,7 +170,7 @@ export default function GetQuoteForm() {
                   <label className={labelClasses(!!errors.enquiry)}>Your Enquiry</label>
                   <textarea 
                     {...register('enquiry')}
-                    placeholder="I want to register a Private Limited Company with 2 directors..."
+                    placeholder="Please describe your enquiry here..."
                     rows={4}
                     className={inputClasses(!!errors.enquiry) + " resize-none"}
                   />
@@ -191,7 +199,7 @@ export default function GetQuoteForm() {
                   {loading ? 'Sending OTP...' : 'Send OTP & Proceed'}
                 </button>
               </form>
-            ) : (
+            ) : step === 'otp' ? (
               <div className="space-y-6">
                 <div className="text-center space-y-2">
                   <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-4">
@@ -230,6 +238,29 @@ export default function GetQuoteForm() {
                     Back to Form
                   </button>
                 </form>
+              </div>
+            ) : (
+              <div className="text-center space-y-6 py-10 animate-hero-reveal">
+                <div className="w-24 h-24 rounded-full bg-green-50 flex items-center justify-center text-green-500 mx-auto mb-6 border border-green-100 shadow-sm">
+                  <Icon name="CheckIcon" size={40} variant="outline" strokeWidth={3} />
+                </div>
+                <div className="space-y-3">
+                  <h3 className="text-3xl font-display font-bold gradient-text">Success!</h3>
+                  <p className="text-lg font-medium text-foreground">
+                    Making first step towards Unicorn
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                    Your enquiry has been received. Our expert advisors will contact you shortly via email and phone.
+                  </p>
+                </div>
+                <div className="pt-6">
+                  <button 
+                    onClick={() => setStep('form')}
+                    className="btn-register px-10 py-3"
+                  >
+                    Submit Another Enquiry
+                  </button>
+                </div>
               </div>
             )}
           </div>

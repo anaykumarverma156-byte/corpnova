@@ -7,12 +7,20 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
     remotePatterns: imageHosts,
     minimumCacheTTL: 60,
+    qualities: [75, 85],
+  },
+  turbopack: {},
+  async redirects() {
+    return [
+      {
+        source: '/dashboard',
+        destination: '/',
+        permanent: false,
+      },
+    ];
   },
   webpack(
     config,

@@ -289,8 +289,8 @@ export default function HeroSection() {
             </div>
 
             {/* Dashboard preview — clean white UI mockup */}
-            <div className="p-6 bg-white">
-              <div className="flex gap-4 mb-4">
+            <div className="p-4 md:p-6 bg-white">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 mb-4">
                 {['1200+\nBusinesses', '99.8%\nSuccess', '48hrs\nAvg Time', '50+\nServices'].map((stat, i) => (
                   <div
                     key={i}
@@ -311,13 +311,13 @@ export default function HeroSection() {
                   </div>
                 ))}
               </div>
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <div
-                  className="flex-1 h-24 rounded-xl"
+                  className="flex-1 h-20 md:h-24 rounded-xl"
                   style={{ background: 'linear-gradient(135deg, rgba(0,113,227,0.08) 0%, rgba(52,170,220,0.05) 100%)', border: '1px solid rgba(0,113,227,0.1)' }}
                 />
                 <div
-                  className="w-1/3 h-24 rounded-xl"
+                  className="w-full sm:w-1/3 h-20 md:h-24 rounded-xl"
                   style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.05)' }}
                 />
               </div>

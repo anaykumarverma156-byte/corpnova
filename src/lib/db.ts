@@ -20,6 +20,7 @@ export const initDb = async () => {
       whatsapp TEXT,
       enquiry TEXT NOT NULL,
       consent BOOLEAN NOT NULL,
+      answered BOOLEAN DEFAULT FALSE,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
   `;

@@ -30,7 +30,7 @@ function StatItem({ stat, active }: { stat: typeof STATS[0]; active: boolean }) 
   const isDecimal = stat.value % 1 !== 0;
   const count = useCountUp(stat.value, active, isDecimal ? 1 : 0);
   return (
-    <div className="text-center px-6 py-10 border-r border-black/6 last:border-r-0">
+    <div className="text-center px-4 md:px-6 py-8 md:py-10 bg-white">
       <div className="stat-number gradient-text-blue font-display mb-2">
         {stat.prefix}{isDecimal ? count.toFixed(1) : Math.floor(count)}{stat.suffix}
       </div>
@@ -58,11 +58,10 @@ export default function StatsSection() {
   }, []);
 
   return (
-    <section className="relative py-4 bg-white" style={{ borderTop: '1px solid rgba(0,0,0,0.06)', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+    <section className="relative bg-white border-y border-black/[0.06]">
       <div
         ref={ref}
-        className="relative z-10 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 divide-x-0 md:divide-x"
-        style={{ '--tw-divide-opacity': '1', borderColor: 'rgba(0,0,0,0.06)' } as React.CSSProperties}
+        className="relative z-10 max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 bg-black/[0.06] gap-[1px]"
       >
         {STATS.map((stat) => (
           <StatItem key={stat.label} stat={stat} active={active} />
