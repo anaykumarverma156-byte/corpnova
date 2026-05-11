@@ -50,7 +50,7 @@ const REGISTRATIONS = [
   },
   {
     id: 'TM-2024-5521',
-    name: 'Trademark — CorpNova',
+    name: 'Trademark — Register Startup',
     status: 'processing',
     statusLabel: 'Under Examination',
     completedOn: 'Filed 02 Apr 2024',
@@ -107,7 +107,7 @@ export default function DashboardOverview() {
               </span>
             </div>
             <h2 className="font-display text-2xl font-semibold text-foreground mb-1">
-              CorpNova Technologies Pvt Ltd
+              Register Startup Technologies Pvt Ltd
             </h2>
             <p className="text-sm text-muted-foreground">
               CIN: U72900MH2024PTC412381 · Incorporated 12 Mar 2024 · Mumbai, Maharashtra

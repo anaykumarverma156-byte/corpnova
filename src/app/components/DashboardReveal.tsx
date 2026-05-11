@@ -4,10 +4,10 @@ import Link from 'next/link';
 import Icon from '@/components/ui/AppIcon';
 
 const FEATURES = [
-  { icon: 'ChartBarIcon', label: 'Registration Tracking' },
-  { icon: 'DocumentTextIcon', label: 'Document Vault' },
-  { icon: 'CalendarIcon', label: 'Compliance Calendar' },
-  { icon: 'BanknotesIcon', label: 'Payment History' },
+  { icon: 'ChatBubbleLeftRightIcon', label: 'Expert Guidance' },
+  { icon: 'DocumentCheckIcon', label: 'Document Review' },
+  { icon: 'ClockIcon', label: 'Priority Support' },
+  { icon: 'ShieldCheckIcon', label: 'Secure Handling' },
 ];
 
 export default function DashboardReveal() {
@@ -49,19 +49,19 @@ export default function DashboardReveal() {
           }}
         >
           <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-4">
-            Your Command Center
+            Personalized Guidance
           </span>
-          <h2 className="text-section-title font-display gradient-text mb-5">
-            One Dashboard.
+          <h2 className="text-3xl md:text-5xl font-display gradient-text mb-5">
+            One Consultation.
             <br />
             <span className="italic font-light gradient-text-blue">Complete Control.</span>
           </h2>
           <p className="max-w-xl mx-auto text-muted-foreground text-lg font-light leading-relaxed">
-            Track every registration, manage every document, monitor every compliance — all in one place.
+            Get expert advice on your registration process, document management, and compliance — all in one session.
           </p>
         </div>
 
-        {/* 3D Dashboard mockup */}
+        {/* 3D Mockup - Rebranded as Consultation Portal */}
         <div
           className="relative"
           style={{
@@ -102,19 +102,19 @@ export default function DashboardReveal() {
                 style={{ background: 'rgba(0,0,0,0.04)' }}
               >
                 <Icon name="LockClosedIcon" size={10} variant="solid" />
-                dashboard.corpnova.in
+                portal.registerstartup.in
               </div>
               <div className="w-20" />
             </div>
 
-            {/* Dashboard content mockup */}
+            {/* Content mockup */}
             <div className="p-6 bg-white">
               <div className="flex gap-4 mb-5">
                 {[
-                  { label: 'Active Registrations', val: '3', color: 'rgba(0,113,227,0.07)' },
-                  { label: 'Documents Stored', val: '24', color: 'rgba(52,170,220,0.06)' },
-                  { label: 'Compliance Score', val: '98%', color: 'rgba(52,199,89,0.07)' },
-                  { label: 'Pending Actions', val: '2', color: 'rgba(255,149,0,0.07)' },
+                  { label: 'Consultations Done', val: '1,200+', color: 'rgba(0,113,227,0.07)' },
+                  { label: 'Expert Score', val: '4.9/5', color: 'rgba(52,170,220,0.06)' },
+                  { label: 'Success Rate', val: '99.8%', color: 'rgba(52,199,89,0.07)' },
+                  { label: 'Upcoming Calls', val: '12', color: 'rgba(255,149,0,0.07)' },
                 ].map((item, i) => (
                   <div
                     key={i}
@@ -122,13 +122,12 @@ export default function DashboardReveal() {
                     style={{ background: item.color, border: '1px solid rgba(0,0,0,0.05)' }}
                   >
                     <div className="text-xs text-muted-foreground mb-1">{item.label}</div>
-                    <div className="font-display font-bold text-2xl text-foreground">{item.val}</div>
+                    <div className="font-display font-bold text-xl text-foreground">{item.val}</div>
                   </div>
                 ))}
               </div>
 
               <div className="flex gap-4">
-                {/* Chart area */}
                 <div
                   className="flex-1 rounded-xl p-4 h-32 flex items-end gap-2"
                   style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.05)' }}
@@ -147,23 +146,22 @@ export default function DashboardReveal() {
                   ))}
                 </div>
 
-                {/* Status list */}
                 <div
                   className="w-56 rounded-xl p-4"
                   style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.05)' }}
                 >
                   {[
-                    { name: 'Pvt Ltd Reg.', status: 'Active' },
-                    { name: 'GST Filing', status: 'Pending' },
-                    { name: 'Trademark', status: 'Processing' },
+                    { name: 'Pvt Ltd Help', status: 'Ready' },
+                    { name: 'GST Query', status: 'Solved' },
+                    { name: 'IP Audit', status: 'Ongoing' },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center justify-between py-2" style={{ borderBottom: i < 2 ? '1px solid rgba(0,0,0,0.05)' : 'none' }}>
                       <span className="text-xs text-foreground font-medium">{item.name}</span>
                       <span
                         className="text-xs px-2 py-0.5 rounded-full font-medium"
                         style={{
-                          background: item.status === 'Active' ? 'rgba(52,199,89,0.12)' : item.status === 'Pending' ? 'rgba(255,149,0,0.12)' : 'rgba(0,113,227,0.1)',
-                          color: item.status === 'Active' ? '#1A8C3A' : item.status === 'Pending' ? '#B86800' : '#0071E3',
+                          background: item.status === 'Ready' ? 'rgba(52,199,89,0.12)' : item.status === 'Solved' ? 'rgba(0,113,227,0.1)' : 'rgba(255,149,0,0.12)',
+                          color: item.status === 'Ready' ? '#1A8C3A' : item.status === 'Solved' ? '#0071E3' : '#B86800',
                         }}
                       >
                         {item.status}
@@ -194,7 +192,7 @@ export default function DashboardReveal() {
                 boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
               }}
             >
-              <Icon name={f.icon as Parameters<typeof Icon>[0]['name']} size={14} className="text-primary" />
+              <Icon name={f.icon as any} size={14} className="text-primary" />
               {f.label}
             </div>
           ))}
@@ -208,8 +206,8 @@ export default function DashboardReveal() {
             transition: 'opacity 1s ease 0.8s',
           }}
         >
-          <Link href="/dashboard" className="btn-register px-8 py-4 text-base">
-            View Your Dashboard
+          <Link href="#get-quote" className="btn-register px-12 py-5 text-lg">
+            Get Started
             <Icon name="ArrowRightIcon" size={18} />
           </Link>
         </div>

@@ -23,15 +23,17 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'CorpNova — Register Your Company in India',
-  description: 'CorpNova is India\'s premier business registration platform for founders. Register Pvt Ltd, LLP, GST, Trademark and more — fast, secure, and trusted.',
+  metadataBase: new URL('https://registerstartup.in'),
+  title: 'Register Startup — Register Your Business in India',
+  description: 'Register Startup is India\'s premier business registration platform for founders. Register Pvt Ltd, LLP, GST, Trademark and more — fast, secure, and trusted.',
+  keywords: ['company registration', 'pvt ltd registration', 'LLP', 'GST', 'Trademark', 'Startup India', 'Register Startup'],
+  authors: [{ name: 'Register Startup Team' }],
   icons: {
     icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
   },
   openGraph: {
-    title: 'CorpNova — Where Serious Businesses Begin',
-    description: 'Premium business registration & company formation for Indian founders.',
+    title: 'Register Startup — Where Serious Businesses Begin',
+    description: 'Premium business registration & business formation for Indian founders.',
     images: [{ url: '/assets/images/app_logo.png', width: 1200, height: 630 }],
   },
 };

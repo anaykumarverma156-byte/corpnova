@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="flex items-center gap-2.5">
           <AppLogo size={28} />
           <span className="font-display text-base font-semibold tracking-tight text-foreground">
-            CorpNova
+            Register Startup
           </span>
         </div>
 
@@ -25,7 +25,7 @@ export default function Footer() {
         </nav>
 
         <p className="text-sm text-muted-foreground">
-          © 2026 CorpNova. All rights reserved.
+          © 2026 Register Startup. All rights reserved.
         </p>
       </div>
     </footer>

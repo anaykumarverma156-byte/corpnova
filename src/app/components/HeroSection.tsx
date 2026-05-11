@@ -226,7 +226,7 @@ export default function HeroSection() {
             transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s',
           }}
         >
-          From idea to incorporation — register your Pvt Ltd, LLP, or OPC in 48 hours.
+          From idea to incorporation — register your Pvt Ltd, LLP, or OPC with us.
           Built for founders who demand precision, speed, and trust.
         </p>
 
@@ -239,8 +239,8 @@ export default function HeroSection() {
             transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s',
           }}
         >
-          <Link href="/services" className="btn-register text-base px-8 py-4 btn-primary-glow">
-            Register Your Company
+          <Link href="#get-quote" className="btn-register text-base px-8 py-4 btn-primary-glow">
+            Register
             <Icon name="ArrowRightIcon" size={18} />
           </Link>
           <Link href="/services" className="btn-ghost text-base px-8 py-4">
@@ -283,7 +283,7 @@ export default function HeroSection() {
                 style={{ background: 'rgba(0,0,0,0.04)' }}
               >
                 <Icon name="LockClosedIcon" size={10} variant="solid" />
-                corpnova.in/dashboard
+                registerstartup.in/dashboard
               </div>
               <div className="w-16" />
             </div>
@@ -291,7 +291,7 @@ export default function HeroSection() {
             {/* Dashboard preview — clean white UI mockup */}
             <div className="p-6 bg-white">
               <div className="flex gap-4 mb-4">
-                {['12,000+\nCompanies', '99.8%\nSuccess', '48hrs\nAvg Time', '50+\nServices'].map((stat, i) => (
+                {['1200+\nBusinesses', '99.8%\nSuccess', '48hrs\nAvg Time', '50+\nServices'].map((stat, i) => (
                   <div
                     key={i}
                     className="flex-1 rounded-xl p-4 text-center"

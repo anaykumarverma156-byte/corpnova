@@ -36,7 +36,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <Link href="/" className="flex items-center gap-2.5">
             <AppLogo size={28} />
             <span className="font-display text-base font-semibold tracking-tight text-foreground">
-              CorpNova
+              Register Startup
             </span>
           </Link>
         </div>
@@ -54,7 +54,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <span className="text-xs font-bold text-primary">CN</span>
             </div>
             <div className="min-w-0">
-              <div className="text-xs font-semibold text-foreground truncate">CorpNova Technologies</div>
+              <div className="text-xs font-semibold text-foreground truncate">Register Startup Technologies</div>
               <div className="text-xs text-muted-foreground">Pvt Ltd · CIN Active</div>
             </div>
           </div>
@@ -87,7 +87,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </div>
             <div className="flex-1 min-w-0">
               <div className="text-xs font-semibold text-foreground">Arjun Mehta</div>
-              <div className="text-xs text-muted-foreground truncate">founder@corpnova.in</div>
+              <div className="text-xs text-muted-foreground truncate">founder@registerstartup.in</div>
             </div>
             <Link
               href="/"

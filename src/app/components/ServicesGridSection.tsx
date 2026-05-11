@@ -2,6 +2,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Icon from '@/components/ui/AppIcon';
+import ServiceModal from './ServiceModal';
+import DocumentsModal from './DocumentsModal';
 
 const SERVICES = [
   {
@@ -10,8 +12,6 @@ const SERVICES = [
     title: 'Private Limited Company',
     description: 'The most preferred structure for startups. Separate legal entity, limited liability, and easy fundraising.',
     tag: 'Most Popular',
-    timeline: '7–10 days',
-    price: '₹6,999',
     color: 'rgba(0,113,227,0.07)',
     borderColor: 'rgba(0,113,227,0.15)',
   },
@@ -21,8 +21,6 @@ const SERVICES = [
     title: 'LLP Registration',
     description: 'Flexible partnership with limited liability. Ideal for professionals and service businesses.',
     tag: 'Professionals',
-    timeline: '10–12 days',
-    price: '₹5,499',
     color: 'rgba(52,170,220,0.06)',
     borderColor: 'rgba(52,170,220,0.15)',
   },
@@ -32,8 +30,6 @@ const SERVICES = [
     title: 'GST Registration',
     description: 'Mandatory for businesses above ₹20L turnover. Get your GSTIN in 3–5 working days.',
     tag: 'Tax & Compliance',
-    timeline: '3–5 days',
-    price: '₹1,499',
     color: 'rgba(0,113,227,0.05)',
     borderColor: 'rgba(0,113,227,0.12)',
   },
@@ -43,8 +39,6 @@ const SERVICES = [
     title: 'Trademark Registration',
     description: 'Protect your brand name and logo. TM filing with IP India, complete documentation handled.',
     tag: 'IP Protection',
-    timeline: '2–3 days filing',
-    price: '₹7,999',
     color: 'rgba(52,170,220,0.06)',
     borderColor: 'rgba(52,170,220,0.15)',
   },
@@ -54,8 +48,6 @@ const SERVICES = [
     title: 'FSSAI License',
     description: 'Food business operators must obtain FSSAI. Basic, State, or Central license based on turnover.',
     tag: 'Food Business',
-    timeline: '15–30 days',
-    price: '₹2,499',
     color: 'rgba(0,113,227,0.05)',
     borderColor: 'rgba(0,113,227,0.12)',
   },
@@ -65,8 +57,6 @@ const SERVICES = [
     title: 'Startup India',
     description: 'DPIIT recognition for tax exemptions, funding access, and government scheme eligibility.',
     tag: 'Growth',
-    timeline: '5–7 days',
-    price: '₹3,999',
     color: 'rgba(0,113,227,0.07)',
     borderColor: 'rgba(0,113,227,0.15)',
   },
@@ -77,6 +67,8 @@ function ServiceCard({ service, delay }: { service: typeof SERVICES[0]; delay: n
   const [visible, setVisible] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [docsOpen, setDocsOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -107,78 +99,87 @@ function ServiceCard({ service, delay }: { service: typeof SERVICES[0]; delay: n
   };
 
   return (
-    <div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      className="relative rounded-2xl p-6 cursor-pointer overflow-hidden group"
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible
-          ? `translateY(0) perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) ${hovered ? 'translateZ(8px)' : ''}`
-          : 'translateY(40px)',
-        transition: `opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)`,
-        background: hovered ? service.color : 'rgba(255,255,255,1)',
-        border: `1px solid ${hovered ? service.borderColor : 'rgba(0,0,0,0.07)'}`,
-        boxShadow: hovered
-          ? `0 20px 60px rgba(0,0,0,0.08), 0 4px 16px rgba(0,113,227,0.08)`
-          : '0 2px 12px rgba(0,0,0,0.04)',
-        transformStyle: 'preserve-3d',
-      }}
-    >
-      <div className="relative z-10" style={{ transform: 'translateZ(20px)' }}>
-        <div className="flex items-start justify-between mb-4">
-          <div
-            className="w-11 h-11 rounded-xl flex items-center justify-center"
-            style={{
-              background: 'rgba(0,113,227,0.08)',
-              border: '1px solid rgba(0,113,227,0.12)',
-            }}
-          >
-            <Icon name={service.icon as Parameters<typeof Icon>[0]['name']} size={22} className="text-primary" />
+    <>
+      <div
+        ref={ref}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={handleMouseLeave}
+        className="relative rounded-2xl p-6 cursor-pointer overflow-hidden group"
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible
+            ? `translateY(0) perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) ${hovered ? 'translateZ(8px)' : ''}`
+            : 'translateY(40px)',
+          transition: `opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)`,
+          background: hovered ? service.color : 'rgba(255,255,255,1)',
+          border: `1px solid ${hovered ? service.borderColor : 'rgba(0,0,0,0.07)'}`,
+          boxShadow: hovered
+            ? `0 20px 60px rgba(0,0,0,0.08), 0 4px 16px rgba(0,113,227,0.08)`
+            : '0 2px 12px rgba(0,0,0,0.04)',
+          transformStyle: 'preserve-3d',
+        }}
+      >
+        <div className="relative z-10" style={{ transform: 'translateZ(20px)' }}>
+          <div className="flex items-start justify-between mb-4">
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center"
+              style={{
+                background: 'rgba(0,113,227,0.08)',
+                border: '1px solid rgba(0,113,227,0.12)',
+              }}
+            >
+              <Icon name={service.icon as Parameters<typeof Icon>[0]['name']} size={22} className="text-primary" />
+            </div>
+            <span
+              className="text-xs font-semibold px-2.5 py-1 rounded-full"
+              style={{
+                background: 'rgba(0,0,0,0.04)',
+                color: '#6E6E73',
+                border: '1px solid rgba(0,0,0,0.06)',
+              }}
+            >
+              {service.tag}
+            </span>
           </div>
-          <span
-            className="text-xs font-semibold px-2.5 py-1 rounded-full"
-            style={{
-              background: 'rgba(0,0,0,0.04)',
-              color: '#6E6E73',
-              border: '1px solid rgba(0,0,0,0.06)',
-            }}
-          >
-            {service.tag}
-          </span>
-        </div>
 
-        <h3 className="text-card-title font-display font-semibold text-foreground mb-2">
-          {service.title}
-        </h3>
-        <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-          {service.description}
-        </p>
+          <h3 className="text-card-title font-display font-semibold text-foreground mb-2">
+            {service.title}
+          </h3>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+            {service.description}
+          </p>
 
-        <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-          <div>
-            <div className="text-lg font-bold font-display text-foreground">{service.price}</div>
-            <div className="text-xs text-muted-foreground">{service.timeline}</div>
-          </div>
-          <div
-            className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
-            style={{
-              background: hovered ? '#0071E3' : 'rgba(0,113,227,0.08)',
-              border: `1px solid ${hovered ? '#0071E3' : 'rgba(0,113,227,0.15)'}`,
-            }}
-          >
-            <Icon
-              name="ArrowRightIcon"
-              size={14}
-              className="transition-colors duration-300"
-              style={{ color: hovered ? '#fff' : '#0071E3' }}
-            />
+          <div className="flex flex-col gap-3 pt-4 mt-auto" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="flex items-center justify-between">
+              <button 
+                onClick={(e) => { e.stopPropagation(); setModalOpen(true); }}
+                className="text-[11px] font-bold uppercase tracking-wider text-primary hover:text-primary/80 transition-colors"
+              >
+                More Info
+              </button>
+              <button 
+                onClick={(e) => { e.stopPropagation(); setDocsOpen(true); }}
+                className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors"
+              >
+                Documents Required
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      
+      <ServiceModal 
+        isOpen={modalOpen} 
+        onClose={() => setModalOpen(false)} 
+        serviceTitle={service.title} 
+      />
+      <DocumentsModal
+        isOpen={docsOpen}
+        onClose={() => setDocsOpen(false)}
+        serviceTitle={service.title}
+      />
+    </>
   );
 }
 
@@ -224,7 +225,7 @@ export default function ServicesGridSection() {
           <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-4">
             Registration Ecosystem
           </span>
-          <h2 className="text-section-title font-display gradient-text mb-5">
+          <h2 className="text-3xl md:text-4xl font-display gradient-text mb-5">
             Every Service Your
             <br />
             <span className="italic font-light gradient-text-blue">Business Needs.</span>

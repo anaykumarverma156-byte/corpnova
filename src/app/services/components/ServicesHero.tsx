@@ -81,7 +81,7 @@ export default function ServicesHero() {
             transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s',
           }}
         >
-          From company formation to ongoing compliance — 20+ expert-managed services
+          From business formation to ongoing compliance — 20+ expert-managed services
           for India&apos;s next generation of founders.
         </p>
       </div>

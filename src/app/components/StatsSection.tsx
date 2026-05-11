@@ -2,9 +2,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const STATS = [
-  { value: 12000, suffix: '+', label: 'Companies Registered', prefix: '' },
+  { value: 1200, suffix: '+', label: 'Businesses Registered', prefix: '' },
   { value: 99.8, suffix: '%', label: 'Success Rate', prefix: '' },
-  { value: 48, suffix: 'hrs', label: 'Average Turnaround', prefix: '' },
+  { value: 48, suffix: 'hrs', label: 'Average Response Time', prefix: '' },
   { value: 50, suffix: '+', label: 'Services Offered', prefix: '' },
 ];
 

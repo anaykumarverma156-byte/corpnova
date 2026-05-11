@@ -159,7 +159,7 @@ export default function FinalCTA() {
             }}
           >
             Join 12,000+ founders who chose precision over compromise.
-            Register your company today and build something that lasts.
+            Register your business today and build something that lasts.
           </p>
 
           <div
@@ -170,12 +170,9 @@ export default function FinalCTA() {
               transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s',
             }}
           >
-            <Link href="/services" className="btn-register text-lg px-10 py-5 btn-primary-glow">
-              Register Your Company
+            <Link href="#get-quote" className="btn-register text-lg px-10 py-5 btn-primary-glow">
+              Register
               <Icon name="ArrowRightIcon" size={20} />
-            </Link>
-            <Link href="/dashboard" className="btn-ghost text-base px-8 py-4">
-              View Dashboard
             </Link>
           </div>
         </div>

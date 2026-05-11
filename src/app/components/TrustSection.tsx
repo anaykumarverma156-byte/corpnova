@@ -4,24 +4,24 @@ import Icon from '@/components/ui/AppIcon';
 
 const TRUST_FEATURES = [
   {
-    icon: 'LockClosedIcon',
-    title: 'Bank-Grade Encryption',
-    desc: 'All documents encrypted with AES-256. Your data never leaves Indian servers.',
+    icon: 'ChatBubbleLeftRightIcon',
+    title: 'First Consultation Free',
+    desc: "Experience our expert guidance first-hand with a complimentary initial session. We'll analyze your business needs and outline the perfect legal structure.",
   },
   {
-    icon: 'ShieldCheckIcon',
-    title: 'MCA21 Direct Integration',
-    desc: 'We file directly on government portals — no intermediaries, no delays.',
+    icon: 'UserGroupIcon',
+    title: 'One-on-One Consultation',
+    desc: 'Get personalized attention with dedicated sessions tailored to your specific goals. Our experts dive deep into your requirements to provide actionable advice.',
   },
   {
-    icon: 'DocumentDuplicateIcon',
-    title: 'Secure Document Vault',
-    desc: 'Permanent encrypted storage for all incorporation documents and certificates.',
+    icon: 'AcademicCapIcon',
+    title: 'Industry Experts',
+    desc: 'Our team consists of veteran CAs, CSs, and legal professionals with years of experience. We ensure your filings are handled with the highest expertise.',
   },
   {
-    icon: 'CheckBadgeIcon',
-    title: 'Compliance Monitoring',
-    desc: 'Automated reminders for ROC filings, GST returns, and annual compliances.',
+    icon: 'BriefcaseIcon',
+    title: 'Experienced Team',
+    desc: 'With a track record of 12,000+ successful incorporations, our seasoned professionals navigate complex government regulations with ease.',
   },
 ];
 
@@ -102,7 +102,7 @@ export default function TrustSection() {
                 transition: 'opacity 1s ease 0.4s',
               }}
             >
-              {['ISO 27001', 'DPDP Compliant', 'MCA Registered', 'SSL Secured'].map((badge) => (
+              {['Secure & Reliable Services', 'Data Privacy Focused', 'Client Information Protected', 'Trusted Business Practices'].map((badge) => (
                 <span
                   key={badge}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-muted-foreground"
@@ -143,8 +143,8 @@ export default function TrustSection() {
                 >
                   <Icon name={feature.icon as Parameters<typeof Icon>[0]['name']} size={20} className="text-primary" />
                 </div>
-                <h4 className="text-sm font-semibold text-foreground mb-1.5">{feature.title}</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">{feature.desc}</p>
+                <h4 className="text-card-title font-semibold text-foreground mb-1.5">{feature.title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{feature.desc}</p>
               </div>
             ))}
           </div>

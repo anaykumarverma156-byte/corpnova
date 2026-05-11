@@ -40,10 +40,10 @@ export default function ServicesCTA() {
         </h2>
         <p className="text-lg text-muted-foreground font-light mb-8 leading-relaxed">
           Our expert advisors will guide you to the right structure for your business goals.
-          Free 30-minute consultation included.
+          Free 10 minutes consultation included.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href="/dashboard" className="btn-register px-8 py-4">
+          <Link href="/#get-quote" className="btn-register px-8 py-4">
             Schedule Free Consultation
             <Icon name="ArrowRightIcon" size={18} />
           </Link>

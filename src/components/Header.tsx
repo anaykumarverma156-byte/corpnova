@@ -3,10 +3,12 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import AppLogo from '@/components/ui/AppLogo';
 
+export const SHOW_DASHBOARD = false;
+
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
-  { label: 'Dashboard', href: '/dashboard' },
+  ...(SHOW_DASHBOARD ? [{ label: 'Dashboard', href: '/dashboard' }] : []),
 ];
 
 export default function Header() {
@@ -46,7 +48,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2.5 group">
             <AppLogo size={32} />
             <span className="font-display text-xl font-semibold tracking-tight text-foreground">
-              CorpNova
+              Register Startup
             </span>
           </Link>
 
@@ -63,11 +65,13 @@ export default function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
-            <Link href="/dashboard" className="btn-ghost text-sm py-2 px-5">
-              Sign In
-            </Link>
-            <Link href="/services" className="btn-register text-sm py-2.5 px-6">
-              Get Started
+            {SHOW_DASHBOARD && (
+              <Link href="/dashboard" className="btn-ghost text-sm py-2 px-5">
+                Sign In
+              </Link>
+            )}
+            <Link href="#get-quote" className="btn-register text-sm py-2.5 px-6">
+              Register
             </Link>
           </div>
 
@@ -109,11 +113,11 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            href="/services"
+            href="#get-quote"
             onClick={() => setMenuOpen(false)}
             className="btn-register mt-4 mx-auto"
           >
-            Register Your Company
+            Register
           </Link>
         </nav>
       </div>
