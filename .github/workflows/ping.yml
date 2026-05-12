@@ -1,0 +1,17 @@
+name: Ping Service
+
+on:
+  schedule:
+    # Runs every 5 minutes
+    - cron: '*/5 * * * *'
+  # Allow manual trigger as well
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Endpoint
+        run: |
+          echo "Pinging https://www.registerstartup.in/ at $(date)"
+          curl -s -o /dev/null -w "%{http_code}\n" https://www.registerstartup.in/
