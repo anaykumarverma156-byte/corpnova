@@ -17,7 +17,11 @@ const EXPLANATIONS: Record<string, string> = {
   'Startup India': 'Startup India is a flagship government initiative aimed at building a strong ecosystem for nurturing innovation and startups in the country. Recognition under this scheme (DPIIT) unlocks various benefits including tax exemptions for three years, access to government funds, and relaxed norms for public procurement. It helps startups scale rapidly by providing intellectual property support and networking opportunities.'
 };
 
+import { useRouter } from 'next/navigation';
+
 export default function ServiceModal({ isOpen, onClose, serviceTitle }: ServiceModalProps) {
+  const router = useRouter();
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -69,6 +73,10 @@ export default function ServiceModal({ isOpen, onClose, serviceTitle }: ServiceM
 
             <div className="space-y-4">
               <button 
+                onClick={() => {
+                  onClose();
+                  router.push('/#get-quote');
+                }}
                 className="w-full py-4 rounded-2xl bg-primary text-white font-semibold hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-3 group"
               >
                 <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center text-white group-hover:translate-x-1 transition-transform">
